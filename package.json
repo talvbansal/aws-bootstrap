@@ -8,9 +8,6 @@
     "stop": "node ./node_modules/pm2/bin/pm2 stop hello_aws",
     "build": "echo 'Building...'"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
     "pm2": "^4.2.0"
   }

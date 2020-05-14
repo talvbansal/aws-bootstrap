@@ -37,7 +37,7 @@ aws cloudformation deploy \
   --stack-name $STACK_NAME \
   --template-file main.yml \
   --no-fail-on-empty-changeset \
-  --capabilities CAPABILITY_NAMED_IAM \
+  --capabilities CAPABILITY_NAMED_IAM CAPABILITY_IAM \
   --parameter-overrides \
     EC2InstanceType=$EC2_INSTANCE_TYPE \
     GitHubOwner=$GH_OWNER \
@@ -50,5 +50,5 @@ aws cloudformation deploy \
 if [ $? -eq 0 ]; then
   aws cloudformation list-exports \
     --profile awsbootstrap \
-    --query "Exports[?Name=='InstanceEndpoint'].Value"
+    --query "Exports[?starts_with(Name,'InstanceEndpoint')].Value"
 fi
